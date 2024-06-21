@@ -1,6 +1,7 @@
 // Main driver / test code
 
 #include <iostream>
+#include "HashTable.h"
 
 int main()
 {
