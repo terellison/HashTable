@@ -5,6 +5,9 @@
 
 int main()
 {
-	std::cout << "Hello, world!" << std::endl;
+	HashTable table = HashTable();
+
+	table.Add("Hello");
+
 	return 0;
 }
