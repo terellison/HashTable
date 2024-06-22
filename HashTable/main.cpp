@@ -16,5 +16,7 @@ int main()
 		throw;
 	}
 
+	auto tableTwo = new HashTable(table);
+
 	return 0;
 }

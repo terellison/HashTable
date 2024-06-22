@@ -41,6 +41,28 @@ HashTable::HashTable()
 
 HashTable::HashTable(const HashTable& other)
 {
+    this->bucketCount = 0;
+    this->buckets = nullptr;
+    *this = other;
+}
+
+HashTable& HashTable::operator=(const HashTable& other)
+{
+    this->bucketCount = other.bucketCount;
+
+    this->buckets = new std::vector<Pair<U_INT, std::string>>[bucketCount];
+
+    for (int i = 0; i < this->bucketCount; ++i)
+    {
+        auto& ourBucket = this->buckets[i];
+        auto& otherBucket = other.buckets[i];
+
+        for (auto it = otherBucket.begin(); it != otherBucket.end(); ++it)
+        {
+            ourBucket.push_back(*it);
+        }
+    }
+    return *this;
 }
 
 bool HashTable::Contains(const std::string& val) const

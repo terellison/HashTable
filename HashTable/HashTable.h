@@ -18,5 +18,6 @@ public:
 	HashTable();
 	HashTable(const HashTable& other);
 	bool Contains(const std::string& val) const;
+	HashTable& operator=(const HashTable& other);
 	~HashTable();
 };
