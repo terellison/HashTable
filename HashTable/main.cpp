@@ -7,7 +7,14 @@ int main()
 {
 	HashTable table = HashTable();
 
-	table.Add("Hello");
+	std::string val = "Hello";
+
+	table.Add(val);
+
+	if (!table.Contains(val))
+	{
+		throw;
+	}
 
 	return 0;
 }

@@ -17,5 +17,6 @@ public:
 	void Add(const std::string& val);
 	HashTable();
 	HashTable(const HashTable& other);
+	bool Contains(const std::string& val) const;
 	~HashTable();
 };

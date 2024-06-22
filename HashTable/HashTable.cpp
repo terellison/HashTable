@@ -43,6 +43,29 @@ HashTable::HashTable(const HashTable& other)
 {
 }
 
+bool HashTable::Contains(const std::string& val) const
+{
+    bool contains = false;
+    
+    auto hash = this->Hash(val);
+    auto bucketNum = hash % this->bucketCount;
+
+    auto pair = Pair<unsigned int, std::string>{ hash, val };
+
+    auto& bucket = this->buckets[bucketNum];
+
+    for (auto i = bucket.begin(); i != bucket.end(); ++i)
+    {
+        if (*i == pair)
+        {
+            contains = true;
+            break;
+        }
+    }
+
+    return contains;
+}
+
 HashTable::~HashTable()
 {
     delete[] this->buckets;
