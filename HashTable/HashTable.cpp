@@ -48,20 +48,24 @@ HashTable::HashTable(const HashTable& other)
 
 HashTable& HashTable::operator=(const HashTable& other)
 {
-    this->bucketCount = other.bucketCount;
-
-    this->buckets = new std::vector<Pair<U_INT, std::string>>[bucketCount];
-
-    for (int i = 0; i < this->bucketCount; ++i)
+    if (this != &other)
     {
-        auto& ourBucket = this->buckets[i];
-        auto& otherBucket = other.buckets[i];
+        this->bucketCount = other.bucketCount;
 
-        for (auto it = otherBucket.begin(); it != otherBucket.end(); ++it)
+        this->buckets = new std::vector<Pair<U_INT, std::string>>[bucketCount];
+
+        for (int i = 0; i < this->bucketCount; ++i)
         {
-            ourBucket.push_back(*it);
+            auto& ourBucket = this->buckets[i];
+            auto& otherBucket = other.buckets[i];
+
+            for (auto it = otherBucket.begin(); it != otherBucket.end(); ++it)
+            {
+                ourBucket.push_back(*it);
+            }
         }
     }
+
     return *this;
 }
 
